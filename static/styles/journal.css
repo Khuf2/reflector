@@ -1,0 +1,80 @@
+/* Begin journal css segment */
+#toolbar {
+    height: 100px;
+}
+
+.margin-top-bottom {
+    margin-top: auto; 
+    margin-bottom: auto;
+}
+
+.black_column {
+    margin: 5px 0px 5px 0px; 
+    border: 2px solid white; 
+    border-radius: 5px;
+}
+
+.white_column {
+    margin: 5px 0px 5px 0px;
+    border-radius: 5px;
+}
+
+.delete_column {
+    border-radius: 10px; 
+    height: 100%;
+}
+
+.trash_link {
+    border: 3px solid rgb(179, 86, 86);
+    border-radius: 5px; 
+    padding: 30px 20px 20px 20px; 
+    margin: 50px 0px;
+    background-color: rgb(65, 51, 51); 
+    color: rgb(179, 86, 86);
+}
+
+.trash_link:hover {
+    color: red;
+    background-color: rgba(65, 51, 51, 0.8);
+}
+
+#search_form input[type='submit'], #filter_form input[type='submit'] { 
+    margin: auto;
+    font-family: inherit; 
+    text-transform: inherit; 
+    font-size: inherit;
+
+    display: block; 
+    padding: .4em;
+}
+
+input[name='date_search'] { 
+    margin: .8em auto;
+    font-family: inherit; 
+    text-transform: inherit; 
+    font-size: inherit;
+
+    display: block; 
+    width: 180px; 
+    padding: .4em;
+}
+
+@media screen and (max-width: 1025px) {
+    #filter_form {
+        visibility: hidden;
+    }
+
+    #search_form {
+        visibility: hidden;
+    }
+
+}
+
+@media screen and (max-width: 770px) {
+    .trash-column {
+        margin: 20px 0px;
+    }
+
+}
+
+/* End journal css segment */

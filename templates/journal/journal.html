@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+      <div id="toolbar" class="box">
+        <div class="columns">
+          <div style="max-width: 250px;" class="column">
+            <div class="margin-top-bottom">
+              <a href="/journal/add" class="has-text-dark"> <i class="far fa-plus-square fa-3x"></i> </a>
+              <div>
+                Add Entry
+              </div>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <form id="filter_form" method="post">
+              {% csrf_token %}
+              <div class="columns margin-top-bottom">
+
+                <div class="column is-one-third">
+                  <div class="select is-rounded">
+                    <select name="category">
+                      <option value="satisfaction_rating">Satisfaction</option>
+                      <option value="stress_rating">Stress</option>
+                      <option value="fitness_num">Exercise</option>
+                      <option value="nutrition_num">Nutrition</option>
+                      <option value="productivity_num">Productivity</option>
+                      <option value="social_num">Social</option>
+                      <option value="sleep_num">Sleep</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="column is-one-fifth">
+                  <div class="select is-rounded">
+                    <select name="up_or_down">
+                      <option value="GTE"> >= </option>
+                      <option value="LTE"> <= </option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="column">
+                    <input style="width: 50px;" class="margin-top-bottom" type="number" name="the_bar" min=1 max=10>
+                </div>
+                <div class="column">
+                  <a style="width: 60px;" href="journal/">
+                    <input style="width: 60px;" class="button margin-top-bottom" name="query_go" class="button" type="submit" value="Filter" />
+                  </a>
+                </div>
+                
+                {% if filtered == True %}
+                <div class="column">
+                  <a style="width: 60px;" href="journal/">
+                    <input style="width: 60px;" class="button margin-top-bottom" name="query_clear" type="submit" value="Reset" />
+                  </a>
+                </div>
+                {% endif %}
+
+                <div class="column is-one-fifth">
+
+                </div>
+                
+                
+              </div>
+            </form>
+            
+          </div>
+        
+          <div class="column is-one-third">
+            <form id="search_form" method="post">
+              {% csrf_token %}
+                <div class="columns">
+                  <div class="margin-top-bottom column">
+                    <input class="input is-rounded is-dark" type="text" name="date_search" placeholder="YYYY-MM-DD">
+                  </div>
+                  <div class="margin-top-bottom column">
+                    <a style="width: 40px" href="/journal/">
+                      <input style="width: 40px" class="button margin-top-bottom" name="submit_date_search" class="button" type="submit" value="Go!" />
+                    </a>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+        
+
+      </div>
+
+      {% for page in latest_journal_page_list %}
+      <div class="columns">
+        <div class="column is-one-quarter has-background-dark black_column">
+          <div class="columns">
+            <div style="text-align: left;" class="column is-half">
+              <p class="has-text-weight-bold is-size-4 has-text-white">{{page.pub_date|date:"d D"}}</p>
+              <p class="has-text-weight-bold is-size-6 has-text-white">{{page.pub_date|date:"M, Y"}}</p>
+            </div>
+
+            <div class="column">
+
+            </div>
+
+            <div class="column is-one-fifth">
+              <a style="color: white; padding: 0px 10px 0 0px;" class="has-text-white;" href="/journal/{{page.id}}">
+                <i class="fa fa-pencil fa-2x"></i>
+              </a>
+            </div>
+
+          </div>
+          
+          
+        </div>
+
+        <div class="column is-three-quarters has-background-light white_column">
+          <div class="columns">
+
+            <div class="column is-one-fifth">
+              <div class="columns">
+                <div class="column">
+                  <i class="fas fa-laugh-wink fa-3x"></i>
+                  <p class="has-text-weight-bold is-size-4">{{page.satisfaction_rating}}</p>
+                </div>
+                <div class="column">
+                  <i class="fas fa-grimace fa-3x"></i>
+                  <p class="has-text-weight-bold is-size-4">{{page.stress_rating}}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+
+            </div> 
+
+            <div class="column is-half">
+              <div class="columns">
+                <div class="column">
+                  <i class="fas fa-running fa-3x"></i>
+                  <p class="has-text-weight-bold is-size-4">{{page.fitness_num}}</p>
+                </div>
+                <div class="column">
+                  <i class="fas fa-utensils fa-3x"></i>
+                  <p class="has-text-weight-bold is-size-4">{{page.nutrition_num}}</p>
+                </div>
+                <div class="column">
+                  <i class="fas fa-briefcase fa-3x"></i>
+                  <p class="has-text-weight-bold is-size-4">{{page.productivity_num}}</p>
+                </div>
+                <div class="column">
+                  <i class="fas fa-users fa-3x"></i>
+                  <p class="has-text-weight-bold is-size-4">{{page.social_num}}</p>
+                </div>
+                <div class="column">
+                  <i class="fas fa-bed fa-3x"></i>
+                  <p class="has-text-weight-bold is-size-4">{{page.sleep_num}}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+
+            </div> 
+
+            <div class="column trash-column">
+              <div class="margin-top-bottom">
+                <div><br></div>
+                <a class="trash_link" onclick="return confirm('Are you sure you want to delete this?')" href="/journal/delete/{{page.id}}">
+                  <i class="fa fa-trash fa-2x margin-top-bottom"></i>
+                </a>
+              </div>
+            </div> 
+
+          </div>
+          
+        </div>
+      </div>
+      {% endfor %}
+
+{% endblock %}

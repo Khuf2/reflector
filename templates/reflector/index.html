@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+      <div>
+        <p id="index_blurb" class="is-size-3 has-text-black has-text-weight-medium has-background-light">
+          The Reflector Attribute Journal helps you collect information with regard to health and wellbeing over an extended period of time. With this data, you
+          can observe relationships between attributes using your journal entries and dynamic graphing tools. <a href="/register/">Sign up</a> and start tracking your entries
+          in a few clicks.<br><span class="is-size-6">*Not all features are available on mobile, wide display recommended.*</span>
+        </p>
+        
+      </div>
+
+      <div style="text-align: left;">
+        <p style="margin: 10px 0px;" class="is-size-4 has-text-dark has-text-weight-semibold">
+          Each day, record a score for each of the following metrics:
+        </p>
+      </div>
+
+      <div class="columns index_columns">
+        <div class="column is-one-quarter">
+          <i class="fas fa-laugh-wink fa-3x"></i>
+          <p class="is-size-4 has-text-weight-bold">(1-10)</p>
+        </div>
+        <div style="text-align: left;" class="column is-three-quarters">
+          <div class="has-text-weight-bold is-size-3">
+            Satisfaction
+          </div>
+          <div>
+            <ul>
+              <li>
+                - Rating of daily satisfaction
+              </li>
+              <li>
+                - Most general metric for ranking the quality of a day
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns index_columns">
+        <div class="column is-one-quarter">
+          <i class="fas fa-grimace fa-3x"></i>
+          <p class="is-size-4 has-text-weight-bold">(1-10)</p>
+        </div>
+        <div style="text-align: left;" class="column is-three-quarters">
+          <div class="has-text-weight-bold is-size-3">
+            Stress
+          </div>
+          <div>
+            <ul>
+              <li>
+                - Rating of daily stress
+              </li>
+              <li>
+                - May have an inverse relationship with satisfaction
+              </li>
+              <li>
+                - Magnitude of stress rating depends on the intensity of immediate or foreseen stressors
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns index_columns">
+        <div class="column is-one-quarter">
+          <i class="fas fa-running fa-3x"></i>
+          <p class="is-size-4 has-text-weight-bold">(1-10)</p>
+        </div>
+        <div style="text-align: left;" class="column is-three-quarters">
+          <div class="has-text-weight-bold is-size-3">
+            Exercise
+          </div>
+          <div>
+            <ul>
+              <li>
+                - Rating of daily physical activity or fitness 
+              </li>
+              <li>
+                - Covers a wide breadth of activities
+              </li>
+              <li>
+                - Magnitude of exercise rating depends on the duration and intensity of the activity
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns index_columns">
+        <div class="column is-one-quarter">
+          <i class="fas fa-utensils fa-3x"></i>
+          <p class="is-size-4 has-text-weight-bold">(1-10)</p>
+        </div>
+        <div style="text-align: left;" class="column is-three-quarters">
+          <div class="has-text-weight-bold is-size-3">
+            Nutrition
+          </div>
+          <div>
+            <ul>
+              <li>
+                - Rating of daily diet
+              </li>
+              <li>
+                - Magnitude of nutrition rating may depend on nutritional quality or simply eating well throughout the day, depending on your goals
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns index_columns">
+        <div class="column is-one-quarter">
+          <i class="fas fa-briefcase fa-3x"></i>
+          <p class="is-size-4 has-text-weight-bold">(1-10)</p>
+        </div>
+        <div style="text-align: left;" class="column is-three-quarters">
+          <div class="has-text-weight-bold is-size-3">
+            Productivity
+          </div>
+          <div>
+            <ul>
+              <li>
+                - Rating of daily work done or tasks completed
+              </li>
+              <li>
+                - For academic, workplace or ambitious efforts
+              </li>
+              <li>
+                - Focus and effectiveness
+              </li>
+              <li>
+                - Magnitude of productivity rating depends on the intensity of the work
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns index_columns">
+        <div class="column is-one-quarter">
+          <i class="fas fa-users fa-3x"></i>
+          <p class="is-size-4 has-text-weight-bold">(1-10)</p>
+        </div>
+        <div style="text-align: left;" class="column is-three-quarters">
+          <div class="has-text-weight-bold is-size-3">
+            Social
+          </div>
+          <div>
+            <ul>
+              <li>
+                - Rating of daily social activity
+              </li>
+              <li>
+                - From familial, platonic, or intimate relationships
+              </li>
+              <li>
+                - Magnitude of social rating depends on the duration and setting of the interaction
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns index_columns">
+        <div class="column is-one-quarter">
+          <i class="fas fa-bed fa-3x"></i>
+          <p class="is-size-4 has-text-weight-bold">(1-10)</p>
+        </div>
+        <div style="text-align: left;" class="column is-three-quarters">
+          <div class="has-text-weight-bold is-size-3">
+            Sleep
+          </div>
+          <div>
+            <ul>
+              <li>
+                - Rating of daily sleep quality
+              </li>
+              <li>
+                - Adherence to sleep schedule or supplemental naps may help this score
+              </li>
+              <li>
+                - Magnitude of sleep rating depends on the duration and quality of the sleep
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns index_columns">
+        <div class="column is-one-quarter">
+          <i class="fas fa-sticky-note fa-3x"></i>
+        </div>
+        <div style="text-align: left;" class="column is-three-quarters">
+          <div class="has-text-weight-bold is-size-3">
+            Extra
+          </div>
+          <div>
+            <ul>
+              <li>
+                - No accompanying rating
+              </li>
+              <li>
+                - Space to add additional information that may not adhere to a particular category
+              </li>
+              <li>
+                - Notes, goals experiences, or upcoming things to look out for can go here
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

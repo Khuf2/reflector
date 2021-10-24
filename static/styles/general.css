@@ -1,0 +1,50 @@
+/* Generic styling block starts here */
+input[type='text'] { 
+    margin: .8em auto;
+    font-family: inherit; 
+    text-transform: inherit; 
+    font-size: inherit;
+
+    display: block; 
+    width: 280px; 
+    padding: .4em;
+}
+
+input[type='password'] { 
+    margin: .8em auto;
+    font-family: inherit; 
+    text-transform: inherit; 
+    font-size: inherit;
+
+    display: block; 
+    width: 280px; 
+    padding: .4em;
+}
+
+input[type='email'] { 
+    margin: .8em auto;
+    font-family: inherit; 
+    text-transform: inherit; 
+    font-size: inherit;
+
+    display: block; 
+    width: 280px; 
+    padding: .4em;
+}
+
+input[type='number'] { 
+    margin: auto;
+    font-family: inherit; 
+    text-transform: inherit; 
+    font-size: inherit;
+
+    display: block; 
+    width: 280px; 
+    padding: .4em;
+}
+
+#main_body_column {
+    text-align: center; 
+    margin: 20px 0px 20px 0px;
+}
+/* End generic styling block */

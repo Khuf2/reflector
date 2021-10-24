@@ -1,0 +1,71 @@
+/* Begin profile css segment */
+.user_container {
+    padding: 10px;  
+    border-radius: 5px;
+}
+
+.user_name_plate {
+    border-radius: 5px;
+    overflow-wrap: break-word;
+}
+
+.username {
+    margin: 0px 10px;
+}
+
+.stats_container {
+    text-align: left; 
+    border-radius: 5px;
+}
+
+.rating_container {
+    border-radius: 5px; 
+    padding: 10px 0px; 
+    margin-bottom: 30px;
+}
+
+.icon_plate {
+    border: 2px solid black; 
+    background-color: rgb(136, 214, 226);
+}
+
+.stat_plate {
+    border: 2px solid black; 
+    background-color: rgb(65, 51, 51);
+    color: white;
+}
+
+.trend_plate {
+    border: 2px solid black; 
+    padding-top: 30px; 
+    background-color: white;
+}
+
+#full_name {
+    font-size: 32px;
+}
+
+#profile_email {
+    font-size: 20px;
+    border-bottom: 2px solid black;
+}
+
+#entry_count_label {
+    font-size: 20px;
+    text-align: center;
+}
+
+#entry_count_container {
+    margin: 0px auto;
+    border: 3px solid black;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+#entry_count {
+    font-size: 72px;
+    text-align: center;
+    padding: 15px 0px;
+}
+/* End profile css segment */

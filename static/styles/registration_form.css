@@ -1,0 +1,7 @@
+#registration_form ul {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0px auto;
+    max-width: 550px;
+}

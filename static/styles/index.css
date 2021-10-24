@@ -1,0 +1,13 @@
+/* Index styling block */
+#index_blurb {
+    margin: 10px 0px 10px 0px; 
+    padding: 10px; 
+    border-radius: 5px;
+}
+
+.index_columns {
+    border-top: 3px solid black; 
+    padding: 10px 0px;
+}
+
+/* End index styling block */

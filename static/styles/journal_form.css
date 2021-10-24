@@ -1,0 +1,42 @@
+/* Begin journal_form css segment */
+#journal_form li {
+    display: inline-block;
+    max-width: 35%;
+}
+
+#journal_form input[type='radio'] {
+    margin: .8em 5px;
+    display: block; 
+    padding: .4em;
+}
+
+#journal_form ul {
+    background-color: white;
+    border-radius: 10px;
+}
+
+#journal_form label {
+    display: inline-block;
+}
+
+#journal_form textarea {
+    display: block;
+    margin: 10px auto 10px auto;
+}
+
+#journal_form > label {
+    display: block;
+    margin: 10px auto 10px auto;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: rgb(65, 51, 51);
+    color: white;
+}
+
+#journal_form_body {
+    border: 3px solid black;
+    border-radius: 3px;
+    padding: 10px 0px; 
+    background-color: rgb(136, 214, 226);
+}
+/* End journal_form css segment */

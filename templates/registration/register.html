@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p class="is-size-2">Create Account</p>
+<form id="registration_form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input style="margin-top: 20px;" class="button" type="submit" value="Create Account" />
+</form>
+{% endblock %}

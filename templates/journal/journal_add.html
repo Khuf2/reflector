@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="journal_form_body" class="columns">
+        <div class="column">
+
+        </div>
+        <div class="column is-half">
+            <form id="journal_form" action="." method='POST'> 
+                {% csrf_token %}
+                {{ form.as_table }}
+                <button type="submit">Save</button>
+            </form>
+        </div>
+        <div class="column">
+
+        </div>
+        
+    </div>
+    
+{% endblock %}

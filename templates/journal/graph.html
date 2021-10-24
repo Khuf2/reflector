@@ -1,0 +1,1100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="buttonpanel columns">
+    <div class="column">
+        <div class="buttonrack columns">
+            <div class="column">
+                <div class="button" onclick="browseLeft()">
+                    <i class="far fa-arrow-alt-circle-left fa-2x"></i>
+                </div>
+            </div>
+
+            <div class="column is-three-fifths">
+                <div class="columns">
+                    <div class="column is-one-fifth">
+                        <div id="all_button" class="button view_button" onclick="toggleView('0');">
+                            Fit All
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <div id="week_button" class="button view_button" onclick="toggleView('day');">
+                            Week View
+                        </div>
+                    </div>
+                    <div class="column is-one-third">
+                        <div id="month_button" class="button view_button" onclick="toggleView('week');">
+                            Month View
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <div id="year_button" class="button view_button" onclick="toggleView('month');">
+                            Year View
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="button" onclick="browseRight()">
+                    <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
+
+<div class="graph_container">
+    <canvas id="myChart"></canvas>
+</div>
+
+<div class="scatter_container">
+    <div class="columns">
+        <div class="column">
+
+        </div>
+        <div class="column is-two-thirds">
+            <div style="min-width: 630px; min-height: 600px;" class="graph_container">
+                <canvas style="width: 600px; height: 600px; margin: 0px auto;" id="scatterChart"></canvas>
+            </div>
+        </div>
+        <div class="column">
+            
+        </div>
+    </div>
+
+    <div class="columns">
+        <div class="column is-two-fifths">
+            <p class="scatter_axis_text">Y-axis</p>
+            <div class="buttonrack scatter_rack">
+                <div class="columns">
+                    <div class="column">
+                        <div id="l_satisfaction_button" class="button scatter_button left_scatter" onclick="toggleScatter('left', 0)">
+                            <i class="fas fa-laugh-wink fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="l_stress_button" class="button scatter_button left_scatter" onclick="toggleScatter('left', 1)">
+                            <i class="fas fa-grimace fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div id="l_fitness_button" class="button scatter_button left_scatter" onclick="toggleScatter('left', 2)">
+                            <i class="fas fa-running fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="l_nutrition_button" class="button scatter_button left_scatter" onclick="toggleScatter('left', 3)">
+                            <i class="fas fa-utensils fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="l_productivity_button" class="button scatter_button left_scatter" onclick="toggleScatter('left', 4)">
+                            <i class="fas fa-briefcase fa-3x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div id="l_social_button" class="button scatter_button left_scatter" onclick="toggleScatter('left', 5)">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="l_sleep_button" class="button scatter_button left_scatter" onclick="toggleScatter('left', 6)">
+                            <i class="fas fa-bed fa-3x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="button plot_button" onclick="scatter_go()">
+                Plot
+            </div>
+        </div>
+
+        <div class="column is-two-fifths">
+            <p class="scatter_axis_text">X-axis</p>
+            <div class="buttonrack scatter_rack">
+                <div class="columns">
+                    <div class="column">
+                        <div id="r_satisfaction_button" class="button scatter_button right_scatter" onclick="toggleScatter('right', 0)">
+                            <i class="fas fa-laugh-wink fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="r_stress_button" class="button scatter_button right_scatter" onclick="toggleScatter('right', 1)">
+                            <i class="fas fa-grimace fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div id="r_fitness_button" class="button scatter_button right_scatter" onclick="toggleScatter('right', 2)">
+                            <i class="fas fa-running fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="r_nutrition_button" class="button scatter_button right_scatter" onclick="toggleScatter('right', 3)">
+                            <i class="fas fa-utensils fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="r_productivity_button" class="button scatter_button right_scatter" onclick="toggleScatter('right', 4)">
+                            <i class="fas fa-briefcase fa-3x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div id="r_social_button" class="button scatter_button right_scatter" onclick="toggleScatter('right', 5)">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="r_sleep_button" class="button scatter_button right_scatter" onclick="toggleScatter('right', 6)">
+                            <i class="fas fa-bed fa-3x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+    // Create your data arrays
+    const satisfaction_data = []
+    const stress_data = []
+    const fitness_data = []
+    const nutrition_data = []
+    const productivity_data = []
+    const social_data = []
+    const sleep_data = []
+
+    // Grab dates and process them, filling each of the data lists
+    var clean_dates = "{{dates}}".split('),');
+
+    last_date = null
+
+
+    clean_dates.forEach(function(x, i) {
+        x = x.replaceAll('[', '')
+        x = x.replaceAll(']', '')
+        x = x.replaceAll('"', '')
+        x = x.replaceAll(" ", "")
+        x = x.replaceAll("(", "")
+        x = x.replaceAll(")", "")
+        x = x.replaceAll("datetime.date", "")  
+        x = x.replaceAll(',', "-")
+
+        true_date = new Date(x);
+        if(last_date != null) {
+            difference_in_days = (true_date - last_date) / 86400000
+            if(difference_in_days > 1) {
+                satisfaction_data.push({x: true_date, y:null})
+                stress_data.push({x: true_date, y:null})
+                fitness_data.push({x: true_date, y:null})
+                nutrition_data.push({x: true_date, y:null})
+                productivity_data.push({x: true_date, y:null})
+                social_data.push({x: true_date, y:null})
+                sleep_data.push({x: true_date, y:null})
+            }
+        }
+        last_date = true_date
+
+        satisfaction_data.push({x: true_date, y:0})
+        stress_data.push({x: true_date, y:0})
+        fitness_data.push({x: true_date, y:0})
+        nutrition_data.push({x: true_date, y:0})
+        productivity_data.push({x: true_date, y:0})
+        social_data.push({x: true_date, y:0})
+        sleep_data.push({x: true_date, y:0})
+    })
+
+    var clean_sats = "{{satisfactions}}".replaceAll(" ", "").replaceAll("[", "").replaceAll("]", "").split(',');
+    let j = 0;
+    for(var i = 0; i < satisfaction_data.length; i++) {
+        if(satisfaction_data[i]["y"] != null) {
+            satisfaction_data[i]["y"] = parseInt(clean_sats[j]);
+            j++;
+        }
+    }
+
+    var clean_stresses = "{{stresses}}".replaceAll(" ", "").replaceAll("[", "").replaceAll("]", "").split(',');
+    j = 0;
+    for(var i = 0; i < stress_data.length; i++) {
+        if(stress_data[i]["y"] != null) {
+            stress_data[i]["y"] = parseInt(clean_stresses[j]);
+            j++;
+        }
+    }
+
+    var clean_fitness = "{{fitness}}".replaceAll(" ", "").replaceAll("[", "").replaceAll("]", "").split(',');
+    j = 0;
+    for(var i = 0; i < fitness_data.length; i++) {
+        if(fitness_data[i]["y"] != null) {
+            fitness_data[i]["y"] = parseInt(clean_fitness[j]);
+            j++;
+        }
+    }
+
+    var clean_nutrition = "{{nutrition}}".replaceAll(" ", "").replaceAll("[", "").replaceAll("]", "").split(',');
+    j = 0;
+    for(var i = 0; i < nutrition_data.length; i++) {
+        if(nutrition_data[i]["y"] != null) {
+            nutrition_data[i]["y"] = parseInt(clean_nutrition[j]);
+            j++;
+        }
+    }
+
+    var clean_productivity = "{{productivity}}".replaceAll(" ", "").replaceAll("[", "").replaceAll("]", "").split(',');
+    j = 0;
+    for(var i = 0; i < productivity_data.length; i++) {
+        if(productivity_data[i]["y"] != null) {
+            productivity_data[i]["y"] = parseInt(clean_productivity[j]);
+            j++;
+        }
+    }
+
+    var clean_social = "{{social}}".replaceAll(" ", "").replaceAll("[", "").replaceAll("]", "").split(',');
+    j = 0;
+    for(var i = 0; i < social_data.length; i++) {
+        if(social_data[i]["y"] != null) {
+            social_data[i]["y"] = parseInt(clean_social[j]);
+            j++;
+        }
+    }
+
+
+    var clean_sleep = "{{sleep}}".replaceAll(" ", "").replaceAll("[", "").replaceAll("]", "").split(',');
+    j = 0;
+    for(var i = 0; i < sleep_data.length; i++) {
+        if(sleep_data[i]["y"] != null) {
+            sleep_data[i]["y"] = parseInt(clean_sleep[j]);
+            j++;
+        }
+    }
+
+    // Scatter chart window
+
+    let scatterChart = document.getElementById('scatterChart').getContext('2d')
+
+    let my_scatter_chart = new Chart(scatterChart, {
+        type:'bubble',
+        data:{
+            datasets:[
+                {   // [0]
+                    label: '',
+                    data: [],
+                    fill: false,
+                    backgroundColor:[
+                        'cyan',
+                    ],
+                    borderWidth: 1,
+                    borderColor: 'black',
+                    tension: 0.1,
+                },
+            ]
+        },
+        options: {
+            responsive: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Attribute Comparison Graph'
+                },
+            },
+            scales: {
+                x: {
+                    display: true,
+                    min: 0,
+                    max: 12,
+                    ticks: {
+                        stepSize: 1,
+                    }
+                },
+                y: {
+                    min: 0,
+                    max: 12,
+                    display: true,
+                    ticks: {
+                        stepSize: 1,
+                    }
+                }
+            }
+        }
+        
+    })
+
+    // End scatter
+
+
+
+    let massPopChart = new Chart(myChart, {
+        type:'line',
+        data:{
+            datasets:[
+                {   // [0]
+                    label: 'Satisfaction',
+                    data: satisfaction_data,
+                    fill: false,
+                    backgroundColor:[
+                        'green',
+                    ],
+                    borderWidth: 2,
+                    borderColor: 'green',
+                    tension: 0.1,
+                },
+                {   // [1]
+                    label: 'Stress',
+                    data: stress_data,
+                    fill: false,
+                    backgroundColor:[
+                        'red',
+                    ],
+                    borderWidth: 2,
+                    borderColor: 'red',
+                    tension: 0.1,
+
+                },
+                {   // [2]
+                    label: 'Exercise',
+                    data: fitness_data,
+                    fill: false,
+                    backgroundColor:[
+                        'blue',
+                    ],
+                    borderWidth: 2,
+                    borderColor: 'blue',
+                    tension: 0.1,
+
+                },
+                {   // [3]
+                    label: 'Nutrition',
+                    data: nutrition_data,
+                    fill: false,
+                    backgroundColor:[
+                        'yellow',
+                    ],
+                    borderWidth: 2,
+                    borderColor: 'yellow',
+                    tension: 0.1,
+
+                },
+                {   // [4]
+                    label: 'Productivity',
+                    data: productivity_data,
+                    fill: false,
+                    backgroundColor:[
+                        'purple',
+                    ],
+                    borderWidth: 2,
+                    borderColor: 'purple',
+                    tension: 0.1,
+
+                },
+                {   // [5]
+                    label: 'Social',
+                    data: social_data,
+                    fill: false,
+                    backgroundColor:[
+                        'orange',
+                    ],
+                    borderWidth: 2,
+                    borderColor: 'orange',
+                    tension: 0.1,
+
+                },
+                {   // [6]
+                    label: 'Sleep',
+                    data: sleep_data,
+                    fill: false,
+                    backgroundColor:[
+                        'pink',
+                    ],
+                    borderWidth: 2,
+                    borderColor: 'pink',
+                    tension: 0.1,
+
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Attribute Chronology Graph'
+                },
+            },
+            scales: {
+                x: {
+                    display: true,
+                    type: 'time',
+                    time: {
+                        minUnit: 'day'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    },
+                },
+                y: {
+                    min: 0,
+                    max: 12,
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Magnitude'
+                    }
+                }
+            }
+        }
+        
+    })
+
+    // Functions
+    function toggleView(new_unit) {
+        if(massPopChart.options.scales.x.time.unit != new_unit || (new_unit == 'day' && massPopChart.options.scales.x.min == undefined)) {
+            if(new_unit == 'day') {
+                data_shortcut = massPopChart.data.datasets[0].data
+            
+                let start = new Date();
+                let end = new Date(data_shortcut[data_shortcut.length-1]['x']);
+                start.setDate(end.getDate() - 7);
+
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+                view_buttons = document.getElementsByClassName('view_button')
+                for (var i = 0; i < view_buttons.length; i++) {
+                    view_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                    view_buttons[i].style.color = "rgb(65, 51, 51)"
+                }
+                
+
+                my_button = document.getElementById('week_button')
+                my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                my_button.style.color = "rgb(245, 245, 245)"
+
+                
+
+            } else if(new_unit == "week") {
+                data_shortcut = massPopChart.data.datasets[0].data
+            
+                let start = new Date();
+                let end = new Date(data_shortcut[data_shortcut.length-1]['x']);
+                start.setDate(end.getDate() - 30);
+
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+                view_buttons = document.getElementsByClassName('view_button')
+                console.log(view_buttons)
+                for (var i = 0; i < view_buttons.length; i++) {
+                    view_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                    view_buttons[i].style.color = "rgb(65, 51, 51)"
+                }
+                
+
+                my_button = document.getElementById('month_button')
+                my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                my_button.style.color = "rgb(245, 245, 245)"
+
+            } else if(new_unit == "month") {
+                data_shortcut = massPopChart.data.datasets[0].data
+            
+                let start = new Date();
+                let end = new Date(data_shortcut[data_shortcut.length-1]['x']);
+                start.setDate(end.getDate() - 365);
+
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+                view_buttons = document.getElementsByClassName('view_button')
+                console.log(view_buttons)
+                for (var i = 0; i < view_buttons.length; i++) {
+                    view_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                    view_buttons[i].style.color = "rgb(65, 51, 51)"
+                }
+                
+
+                my_button = document.getElementById('year_button')
+                my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                my_button.style.color = "rgb(245, 245, 245)"
+            } else {
+                massPopChart.options.scales.x.min = undefined
+                massPopChart.options.scales.x.max = undefined 
+                massPopChart.options.scales.x.time.unit = undefined
+
+
+                view_buttons = document.getElementsByClassName('view_button')
+                console.log(view_buttons)
+                for (var i = 0; i < view_buttons.length; i++) {
+                    view_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                    view_buttons[i].style.color = "rgb(65, 51, 51)"
+                }
+                
+
+                my_button = document.getElementById('all_button')
+                my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                my_button.style.color = "rgb(245, 245, 245)"
+
+                massPopChart.update();
+                return
+            }
+
+
+            massPopChart.options.scales.x.time.unit = new_unit
+            massPopChart.update();
+        }  
+    }
+
+    function browseLeft() {
+        if(massPopChart.options.scales.x.time.unit == 'day') {
+            if (massPopChart.options.scales.x.min != undefined) {
+                data_shortcut = massPopChart.data.datasets[0].data
+
+                let start = new Date();
+                let end = null;
+
+                start = new Date(massPopChart.options.scales.x.min)
+                end = new Date(massPopChart.options.scales.x.min)
+
+                start.setDate(start.getDate() - 7);
+
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+
+                massPopChart.options.scales.x.time.unit = 'day'
+                massPopChart.update();
+            }
+        } else if(massPopChart.options.scales.x.time.unit == 'week') {
+            if (massPopChart.options.scales.x.min != undefined) {
+                data_shortcut = massPopChart.data.datasets[0].data
+
+                let start = new Date();
+                let end = null;
+
+                start = new Date(massPopChart.options.scales.x.min)
+                end = new Date(massPopChart.options.scales.x.min)
+
+                start.setDate(start.getDate() - 30);
+
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+
+                massPopChart.options.scales.x.time.unit = 'week'
+                massPopChart.update();
+            }
+        } else {
+            if (massPopChart.options.scales.x.min != undefined) {
+                data_shortcut = massPopChart.data.datasets[0].data
+
+                let start = new Date();
+                let end = null;
+
+                start = new Date(massPopChart.options.scales.x.min)
+                end = new Date(massPopChart.options.scales.x.min)
+
+                start.setDate(start.getDate() - 365);
+
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+
+                massPopChart.options.scales.x.time.unit = 'month'
+                massPopChart.update();
+            }
+        }
+    }
+
+    function browseRight() {
+        if(massPopChart.options.scales.x.time.unit == 'day') {
+            if (massPopChart.options.scales.x.min != undefined) {
+                data_shortcut = massPopChart.data.datasets[0].data
+
+                let start = null;
+                let end = new Date();
+
+                start = new Date(massPopChart.options.scales.x.max)
+                end = new Date(massPopChart.options.scales.x.max)
+
+                end.setDate(end.getDate() + 7);
+                
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+                massPopChart.options.scales.x.time.unit = 'day'
+                massPopChart.update();
+            } 
+        } else if(massPopChart.options.scales.x.time.unit == 'week') {
+            if (massPopChart.options.scales.x.min != undefined) {
+                data_shortcut = massPopChart.data.datasets[0].data
+
+                let start = null;
+                let end = new Date();
+
+                start = new Date(massPopChart.options.scales.x.max)
+                end = new Date(massPopChart.options.scales.x.max)
+
+                end.setDate(end.getDate() + 30);
+                
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+                massPopChart.options.scales.x.time.unit = 'week'
+                massPopChart.update();
+            }
+        } else {
+            if (massPopChart.options.scales.x.min != undefined) {
+                data_shortcut = massPopChart.data.datasets[0].data
+
+                let start = null;
+                let end = new Date();
+
+                start = new Date(massPopChart.options.scales.x.max)
+                end = new Date(massPopChart.options.scales.x.max)
+
+                end.setDate(end.getDate() + 365);
+                
+                massPopChart.options.scales.x.min = start
+                massPopChart.options.scales.x.max = end 
+
+                massPopChart.options.scales.x.time.unit = 'month'
+                massPopChart.update();
+            }
+        }
+    }
+
+    function toggleScatter(side, index) {
+        if(side == 'left') {
+            console.log("left")
+            console.log(index)
+
+            switch(index) {
+                case 0:
+                    my_button = document.getElementById('l_satisfaction_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        l_scatter_buttons = document.getElementsByClassName('left_scatter')
+                        for (var i = 0; i < l_scatter_buttons.length; i++) {
+                            l_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            l_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            l_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 1:
+                    my_button = document.getElementById('l_stress_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        l_scatter_buttons = document.getElementsByClassName('left_scatter')
+                        for (var i = 0; i < l_scatter_buttons.length; i++) {
+                            l_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            l_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            l_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 2:
+                    my_button = document.getElementById('l_fitness_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        l_scatter_buttons = document.getElementsByClassName('left_scatter')
+                        for (var i = 0; i < l_scatter_buttons.length; i++) {
+                            l_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            l_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            l_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 3:
+                    my_button = document.getElementById('l_nutrition_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        l_scatter_buttons = document.getElementsByClassName('left_scatter')
+                        for (var i = 0; i < l_scatter_buttons.length; i++) {
+                            l_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            l_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            l_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 4:
+                    my_button = document.getElementById('l_productivity_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        l_scatter_buttons = document.getElementsByClassName('left_scatter')
+                        for (var i = 0; i < l_scatter_buttons.length; i++) {
+                            l_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            l_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            l_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 5:
+                    my_button = document.getElementById('l_social_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+
+                    } else {
+                        l_scatter_buttons = document.getElementsByClassName('left_scatter')
+                        for (var i = 0; i < l_scatter_buttons.length; i++) {
+                            l_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            l_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            l_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 6:
+                    my_button = document.getElementById('l_sleep_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        l_scatter_buttons = document.getElementsByClassName('left_scatter')
+                        for (var i = 0; i < l_scatter_buttons.length; i++) {
+                            l_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            l_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            l_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+            }
+
+        } else {
+            console.log("right")
+            console.log(index)
+
+            switch(index) {
+                case 0:
+                    my_button = document.getElementById('r_satisfaction_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        r_scatter_buttons = document.getElementsByClassName('right_scatter')
+                        for (var i = 0; i < r_scatter_buttons.length; i++) {
+                            r_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            r_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            r_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 1:
+                    my_button = document.getElementById('r_stress_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        r_scatter_buttons = document.getElementsByClassName('right_scatter')
+                        for (var i = 0; i < r_scatter_buttons.length; i++) {
+                            r_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            r_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            r_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 2:
+                    my_button = document.getElementById('r_fitness_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        r_scatter_buttons = document.getElementsByClassName('right_scatter')
+                        for (var i = 0; i < r_scatter_buttons.length; i++) {
+                            r_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            r_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            r_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 3:
+                    my_button = document.getElementById('r_nutrition_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        r_scatter_buttons = document.getElementsByClassName('right_scatter')
+                        for (var i = 0; i < r_scatter_buttons.length; i++) {
+                            r_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            r_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            r_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 4:
+                    my_button = document.getElementById('r_productivity_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        r_scatter_buttons = document.getElementsByClassName('right_scatter')
+                        for (var i = 0; i < r_scatter_buttons.length; i++) {
+                            r_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            r_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            r_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 5:
+                    my_button = document.getElementById('r_social_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+
+                    } else {
+                        r_scatter_buttons = document.getElementsByClassName('right_scatter')
+                        for (var i = 0; i < r_scatter_buttons.length; i++) {
+                            r_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            r_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            r_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+                case 6:
+                    my_button = document.getElementById('r_sleep_button');
+                    if(my_button.style.backgroundColor == "rgb(65, 51, 51)") {
+                        my_button.style.backgroundColor = "rgb(245, 245, 245)"
+                        my_button.style.color = "rgb(65, 51, 51)"
+                        my_button.classList.remove("scatter_clicked")
+                    } else {
+                        r_scatter_buttons = document.getElementsByClassName('right_scatter')
+                        for (var i = 0; i < r_scatter_buttons.length; i++) {
+                            r_scatter_buttons[i].style.backgroundColor = "rgb(245, 245, 245)"
+                            
+                            r_scatter_buttons[i].style.color = "rgb(65, 51, 51)"
+                            r_scatter_buttons[i].classList.remove("scatter_clicked")
+                        }
+                        my_button.style.backgroundColor = "rgb(65, 51, 51)"
+                        my_button.style.color = "rgb(245, 245, 245)"
+                        my_button.classList.add("scatter_clicked")
+                    }
+                    break;
+            }
+
+        }
+    }
+
+    function scatter_go() {
+        // If two are selected, then realign the data, refresh the chart
+        // Otherwise, do nothing
+        validator1 = -1
+        validator2 = -1
+        l_scatter_buttons = document.getElementsByClassName('left_scatter')
+        r_scatter_buttons = document.getElementsByClassName('right_scatter')
+
+
+        for (var i = 0; i < l_scatter_buttons.length; i++) {
+            if(l_scatter_buttons[i].classList.contains("scatter_clicked")){
+                console.log(i +": " + l_scatter_buttons[i])
+                validator1 = i
+                continue;
+            } 
+            if(r_scatter_buttons[i].classList.contains("scatter_clicked")) {
+                validator2 = i
+            }
+            if(validator1 != -1 && validator2 != -1) {
+                break;
+            }
+        }
+
+
+        if(validator1 > -1 && validator2 > -1) {
+            // We have accepted a proper two attribute graph
+
+            correlated_pair = []
+            let category1 = []
+            let yLabel = ""
+            let category2 = []
+            let xLabel = ""
+            switch(validator1) {
+                case 0:
+                    category1 = clean_sats
+                    yLabel = "Satisfaction"
+                    break;
+                case 1:
+                    category1 = clean_stresses
+                    yLabel = "Stress"
+                    break;
+                case 2:
+                    category1 = clean_fitness
+                    yLabel = "Exercise"
+                    break;
+                case 3: 
+                    category1 = clean_nutrition
+                    yLabel = "Nutrition"
+                    break;
+                case 4:
+                    category1 = clean_productivity
+                    yLabel = "Productivity"
+                    break;
+                case 5:
+                    category1 = clean_social 
+                    yLabel = "Social"  
+                    break;
+                case 6:
+                    category1 = clean_sleep
+                    yLabel = "Sleep"
+                    break;
+            }
+            switch(validator2) {
+                case 0:
+                    category2 = clean_sats
+                    xLabel = "Satisfaction"
+                    break;
+                case 1:
+                    category2 = clean_stresses
+                    xLabel = "Stress"
+                    break;
+                case 2:
+                    category2 = clean_fitness
+                    xLabel = "Exercise"
+                    break;
+                case 3: 
+                    category2 = clean_nutrition
+                    xLabel = "Nutrition"
+                    break;
+                case 4:
+                    category2 = clean_productivity
+                    xLabel = "Productivity"
+                    break;
+                case 5:
+                    category2 = clean_social 
+                    xLabel = "Social"  
+                    break;
+                case 6:
+                    category2 = clean_sleep
+                    xLabel = "Sleep"
+                    break;
+            }
+
+            let holder = new Array(11)
+            for(var i = 1; i < holder.length; i++) {
+                holder[i] = [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }
+
+            for(var i = 0; i < category1.length; i++) {
+                holder[category2[i]][category1[i]] += 1
+            }
+
+            for(var i = 1; i < 11; i++) {
+                for(var j = 1; j < 11; j++) {
+                    correlated_pair.push({x: i, y: j, r: (2*holder[i][j])})
+                }
+            }   
+
+            /*
+            for(var i = 0; i < category1.length; i++) {
+                correlated_pair.push({x: category2[i], y: category1[i]})
+            }
+            */
+
+            my_scatter_chart.data.datasets[0].data = []
+
+            correlated_pair.forEach((element) => {
+                my_scatter_chart.data.datasets[0].data.push(element);
+            });
+
+            my_scatter_chart.options.scales.x.title = {display: true, text: xLabel}
+            my_scatter_chart.options.scales.y.title = {display: true, text: yLabel}
+
+            my_scatter_chart.update();
+
+
+        }
+    }
+
+</script>
+
+
+{% endblock %}

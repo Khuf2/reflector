@@ -1,0 +1,37 @@
+#usage_container, #significance_container {
+    background-color: rgb(65, 51, 51);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.usage_plate, .significance_panel {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 10px;
+}
+
+.usage_plate > ul, .significance_panel > ul {
+    list-style-type: circle;
+    text-align: left;
+}
+
+.usage_plate li, .significance_panel li {
+    margin: 10px 0px 10px 1rem;
+}
+
+.sources {
+    margin: 20px auto;
+    padding: 10px;
+    background-color: rgb(65, 51, 51);
+    color: white;
+    border-radius: 5px;
+}
+
+.significance_title, .usage_title {
+    color: rgb(65, 51, 51);
+    margin: 20px;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+}

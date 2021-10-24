@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="usage_container">
+        <div class="usage_title is-size-2">
+            How to use Reflector
+        </div>
+        <div class="usage_plate">
+            <p class="is-size-4">Journal Page Explained</p>
+            <ul>
+                <li>The 'My Entries' tab leads to the main journal where entries are listed and browsed.</li>
+                <li>Pages are listed in reverse chronological order, so the newest entries rise to the top of the list.</li>
+                <li>Pages can be added by clicking the plus icon, "Add Entry", and filling out the associated form. </li>
+                <li>Numerical values for a given page's categories can be viewed by browsing.</li>
+                <li>Textual responses can be viewed by clicking the pencil icon and opening the page editor.</li>
+                <li>Entries can be deleted by clicking the associated trash icon and accepting the confirmation popup.</li>
+                <li>Basic queries can be conducted using the toolbar. Select an attribute to filter by, choose either 'greater than or equal' (>=) or 'less than or equal' (<=), and a number (1-10) to compare against, then click 'Filter'. </li>
+                <li>Filters can be cleared via the 'Reset' button that appears in the toolbar after applying a filter.</li>
+                <li>The search bar on the right side of the toolbar can be used to search a specific date from your journal, with the 'Go!' button.</li>
+            </ul>
+        </div>
+
+        <div class="usage_plate">
+            <p class="is-size-4">Adding/Editing Pages Explained</p>
+            <ul>
+                <li>When adding a journal page, one user cannot have multiple pages linked to the same day. This will result in an invalid entry.</li>
+                <li>The 'Date' field suggests a date in the format of 'YYYY-MM-DD', though it also accepts many other commonly used formats.</li>
+                <li>The numerical response fields are all mandatory for a page entry, but the text responses are not required and can be skipped if unnecessary.</li>
+            </ul>
+        </div>
+
+        <div class="usage_plate">
+            <p class="is-size-4">Profile Explained</p>
+            <ul>
+                <li>Your profile holds account information such as your username, first and last name, email, join date. It also keeps track of your total number of journal entries. </li>
+                <li>The right side of the profile page maintains a running average over all of your entries, and displays these calculations in a table.</li>
+                <li>The other table, 'Recent Average Ratings', maintains a running average over all of your entries from the last week.</li>
+                <li>Once you have entries logged in 'Recent Average Ratings', the column in white will begin to list percentages. These are your trends in each category over the last week compared to your cumulative average.</li>
+            </ul>
+        </div>
+
+        <div class="usage_plate">
+            <p class="is-size-4">Charts Explained</p>
+            <ul>
+                <li>The 'My Charts' tab includes two graphing utilities to view your journal data with, a chronological line graph and a two-attribute scatter plot.</li>
+                <li>The line graph by default will scale to fit all recorded entries into the frame, but users can hone in on smaller timeframes using the weekly view or monthly view from the top toolbar.</li>
+                <li>The attributes of the line graph can be toggled on and off individually by clicking the colored label above the graph corresponding to the attribute.</li>
+                <li>The scatter plot has two button panels, each corresponding to an axis of the chart. The panels allow you to select two unique attributes to plot on the chart.</li>
+                <li>The scatter chart will plot each entry as a point of those two given attributes values, and overlapping points are represented as a larger point.</li>
+                <li>Both the line chart and the scatter chart can be used to find relationships between data attributes, but do so in different ways. Be sure to employ both.</li>
+            </ul>
+        </div>
+
+        
+    </div>
+{% endblock %}

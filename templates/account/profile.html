@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block content %}
+      <div class="columns">
+
+        <div class="column is-two-fifths">
+          <div class="columns">
+            <div class="column">
+              <div class="has-background-dark user_container">
+                <div class="has-background-light is-size-3 user_name_plate">
+                  <p class="username">{{ request.user }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-full is-size-4 has-background-light stats_container">
+              <div id="full_name">{{request.user.first_name}} {{request.user.last_name}}</div>
+              <div id="profile_email">{{request.user.email}}</div>
+              <br><br><br><br><br>
+
+              <div class="columns">
+                <div class="column">
+                  <div id="entry_count_label">
+                    <p>Total Entries:</p>
+                  </div>
+                  <div id="entry_count_container">
+                    <div id="entry_count">
+                      {{ journal_count }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <br><br><br><br>
+
+              <div class="columns">
+                <div class="column">
+                  <a style="margin: 10px auto;" class="button" href="/account/password_change/">
+                    Change your Password
+                  </a>
+                </div>
+                
+              </div>
+              
+            </div> 
+          </div>
+        </div>
+
+        <div class="column">
+
+        </div>
+
+        <div style="min-width: 300px;"class="column is-one-fifth">
+          <div class="is-size-4 has-background-light rating_container">All-time Average Ratings</div>
+
+          <div class="columns is-size-1">
+            <div class="column icon_plate">
+              <div><span class="icon"><i class="fas fa-laugh-wink"></i></span></div>
+            </div>
+            <div class="column is-two-thirds stat_plate">
+              <p class="is-size-1">{{satisfaction_avg}} </p>
+            </div>
+          </div>
+          
+          <div class="columns is-size-1">
+            <div class="column icon_plate">
+              <div><span class="icon"><i class="fas fa-grimace"></i></span></div>
+            </div>
+            <div class="column is-two-thirds stat_plate">
+              <p class="is-size-1">{{stress_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column icon_plate">
+              <div><span class="icon"><i class="fas fa-running"></i></span></div>
+            </div>
+            <div class="column is-two-thirds stat_plate">
+              <p class="is-size-1">{{fitness_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column icon_plate">
+              <div><span class="icon"><i class="fas fa-utensils"></i></span></div>
+            </div>
+            <div class="column is-two-thirds stat_plate">
+              <p class="is-size-1">{{nutrition_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column icon_plate">
+              <div><span class="icon"><i class="fas fa-briefcase"></i></span></div>
+            </div>
+            <div class="column is-two-thirds stat_plate">
+              <p class="is-size-1">{{productivity_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column icon_plate">
+              <div><span class="icon"><i class="fas fa-users"></i></span></div>
+            </div>
+            <div class="column is-two-thirds stat_plate">
+              <p class="is-size-1">{{social_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column icon_plate">
+              <div><span class="icon"><i class="fas fa-bed"></i></span></div>
+            </div>
+            <div class="column is-two-thirds stat_plate">
+              <p class="is-size-1">{{sleep_avg}} </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+
+        </div>
+
+        <div style="min-width: 300px;"class="column is-one-third">
+          <div class="is-size-4 has-background-light rating_container">Recent Average Ratings</div>
+
+          <div class="columns is-size-1">
+            <div class="column is-size-4 is-one-third trend_plate">
+              <div>{{satisfaction_trend}}</div>
+            </div>
+            <div class="column is-one-fifth icon_plate">
+              <div><span class="icon"><i class="fas fa-laugh-wink"></i></span></div>
+            </div>
+            <div class="column is-half stat_plate">
+              <p class="is-size-1">{{recent_satisfaction_avg}} </p>
+            </div>
+          </div>
+          
+          <div class="columns is-size-1">
+            <div class="column is-size-4 is-one-third trend_plate">
+              <div>{{stress_trend}}</div>
+            </div>
+            <div class="column is-one-fifth icon_plate">
+              <div><span class="icon"><i class="fas fa-grimace"></i></span></div>
+            </div>
+            <div class="column is-half stat_plate">
+              <p class="is-size-1">{{recent_stress_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column is-size-4 is-one-third trend_plate">
+              <div>{{fitness_trend}}</div>
+            </div>
+            <div class="column is-one-fifth icon_plate">
+              <div><span class="icon"><i class="fas fa-running"></i></span></div>
+            </div>
+            <div class="column is-half stat_plate">
+              <p class="is-size-1">{{recent_fitness_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column is-size-4 is-one-third trend_plate">
+              <div>{{nutrition_trend}}</div>
+            </div>
+            <div class="column is-one-fifth icon_plate">
+              <div><span class="icon"><i class="fas fa-utensils"></i></span></div>
+            </div>
+            <div class="column is-half stat_plate">
+              <p class="is-size-1">{{recent_nutrition_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div  class="column is-size-4 is-one-third trend_plate">
+              <div>{{productivity_trend}}</div>
+            </div>
+            <div class="column is-one-fifth icon_plate">
+              <div><span class="icon"><i class="fas fa-briefcase"></i></span></div>
+            </div>
+            <div  class="column is-half stat_plate">
+              <p class="is-size-1">{{recent_productivity_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column is-size-4 is-one-third trend_plate">
+              <div>{{social_trend}}</div>
+            </div>
+            <div class="column is-one-fifth icon_plate">
+              <div><span class="icon"><i class="fas fa-users"></i></span></div>
+            </div>
+            <div class="column is-half stat_plate">
+              <p class="is-size-1">{{recent_social_avg}} </p>
+            </div>
+          </div>
+
+          <div class="columns is-size-1">
+            <div class="column is-size-4 is-one-third trend_plate">
+              <div>{{sleep_trend}}</div>
+            </div>
+            <div class="column is-one-fifth icon_plate">
+              <div><span class="icon"><i class="fas fa-bed"></i></span></div>
+            </div>
+            <div class="column is-half stat_plate">
+              <p class="is-size-1">{{recent_sleep_avg}} </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+{% endblock %}
